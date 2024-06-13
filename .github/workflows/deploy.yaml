@@ -26,8 +26,4 @@ jobs:
         aws lambda create-function --function-name testfunction --zip-file fileb://test.zip --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/seunxxrole --handler testfunction.handler
 
     - name: Check if Everything Works
-      run: echo "Everything works fine"
-
-    - name: Update Lambda Function Code
-      run: |
-        aws lambda update-function-code --function-name testfunction --zip-file fileb://test.zip
+      run: echo "Everything works fine"    
