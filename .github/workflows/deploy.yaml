@@ -8,7 +8,7 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     steps:
-    - name: "Checkout"
+    - name: Checkout
       uses: actions/checkout@v4
     
     - name: Configure AWS Credentials
@@ -18,15 +18,16 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
-    - name: "create function"
+    - name: Create Lambda Function
       run: |
-        aws lambda create-function --function-name testfunction --zip-file fileb://code.py --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/seunxxrole --handler testfunction.handler    
-    
-    - name: "checks if this works"
-      run: |
-        echo "Everything works fine"  
-    - name: 'Convert to zip format'
-      run: |
-        zip -j test.zip ./code.py 
+        aws lambda create-function --function-name testfunction --zip-file fileb://test.zip --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/seunxxrole --handler testfunction.handler
 
-        aws lambda update-function-code --function-name testfuction --zip-file fileb://test.zip    
+    - name: Check if Everything Works
+      run: echo "Everything works fine"
+    
+    - name: Convert to Zip Format
+      run: zip -j test.zip ./code.py 
+
+    - name: Update Lambda Function Code
+      run: |
+        aws lambda update-function-code --function-name testfunction --zip-file fileb://test.zip
