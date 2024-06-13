@@ -17,6 +17,9 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
+     
+    - name: Convert to Zip Format
+      run: zip -j test.zip ./code.py    
 
     - name: Create Lambda Function
       run: |
@@ -24,9 +27,6 @@ jobs:
 
     - name: Check if Everything Works
       run: echo "Everything works fine"
-    
-    - name: Convert to Zip Format
-      run: zip -j test.zip ./code.py 
 
     - name: Update Lambda Function Code
       run: |
