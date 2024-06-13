@@ -23,4 +23,6 @@ jobs:
         echo "Everything works fine"  
     - name: 'Convert to zip format'
       run: |
-        zip -j test.zip ./code.py      
+        zip -j test.zip ./code.py 
+
+        aws lambda update-function-code --function-name seunfunction2 --zip-file test.zip    
