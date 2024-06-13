@@ -23,7 +23,11 @@ jobs:
 
     - name: Create Lambda Function
       run: |
-        aws lambda create-function --function-name trustfunction --zip-file fileb://test.zip --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/seunxxrole --handler trustfunction.handler
-
+        aws lambda create-function --function-name bigfunction --zip-file fileb://test.zip --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/seunxxrole --handler bigfunction.handler
+    
+    - name: Update Lambda Function Code
+      run: |
+        aws lambda update-function-code --function-name bigfunction --zip-file fileb://test.zip
+              
     - name: Check if Everything Works
       run: echo "Everything works fine"    
