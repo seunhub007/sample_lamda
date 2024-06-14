@@ -47,7 +47,7 @@ jobs:
         aws lambda create-function --function-name Wfunction --zip-file fileb://test.zip --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/bestrole --handler Wfunction.handler
 
     - name: Wait for Lambda Creation
-      run: sleep 20
+      run: sleep 10
   
     
     - name: Update Lambda Function Code
