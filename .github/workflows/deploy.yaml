@@ -42,17 +42,17 @@ jobs:
     - name: wait for policy attachment
       run: sleep 10
 
-    - name: Create Lambda Function
-      run: |
-        aws lambda create-function --function-name Wfunction --zip-file fileb://test.zip --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/bestrole --handler Wfunction.handler
+    # - name: Create Lambda Function
+    #   run: |
+    #     aws lambda create-function --function-name Wfunction --zip-file fileb://test.zip --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/bestrole --handler Wfunction.handler
 
-    - name: Wait for Lambda Creation
-      run: sleep 20
+    # - name: Wait for Lambda Creation
+    #   run: sleep 20
   
     
-    - name: Update Lambda Function Code
-      run: |
-        aws lambda update-function-code --function-name Wfunction --zip-file fileb://test.zip
+    # - name: Update Lambda Function Code
+    #   run: |
+    #     aws lambda update-function-code --function-name Wfunction --zip-file fileb://test.zip
               
-    - name: Check if Everything Works
-      run: echo "Everything works fine"    
+    # - name: Check if Everything Works
+    #   run: echo "Everything works fine"    
