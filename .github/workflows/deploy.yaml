@@ -23,15 +23,15 @@ jobs:
 
     - name: Create Lambda Function
       run: |
-        aws lambda create-function --function-name Xfunction --zip-file fileb://test.zip --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/seunxxrole --handler Xfunction.handler
+        aws lambda create-function --function-name Pfunction --zip-file fileb://test.zip --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/seunxxrole --handler Pfunction.handler
 
     - name: Wait for Lambda Creation
-      run: sleep 60
+      run: sleep 20
   
     
     - name: Update Lambda Function Code
       run: |
-        aws lambda update-function-code --function-name Xfunction --zip-file fileb://test.zip
+        aws lambda update-function-code --function-name Pfunction --zip-file fileb://test.zip
               
     - name: Check if Everything Works
       run: echo "Everything works fine"    
