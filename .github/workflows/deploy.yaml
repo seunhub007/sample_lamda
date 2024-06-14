@@ -23,7 +23,7 @@ jobs:
 
     - name: Create Lambda Role
       run: |
-        aws iam create-role --role-name seunxxxrole --assume-role-policy-document file://trust-policy.json
+        aws iam create-role --role-name seunxxxrole --assume-role-policy-document file://sample.json
     
     - name: wait for role creation
       run: sleep 10    
@@ -31,7 +31,7 @@ jobs:
 
     - name: Create Lambda Function
       run: |
-        aws lambda create-function --function-name Pfunction --zip-file fileb://test.zip --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/seunxxrole --handler Pfunction.handler
+        aws lambda create-function --function-name Rfunction --zip-file fileb://test.zip --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/seunxxxrole --handler Rfunction.handler
 
     - name: Wait for Lambda Creation
       run: sleep 20
@@ -39,7 +39,7 @@ jobs:
     
     - name: Update Lambda Function Code
       run: |
-        aws lambda update-function-code --function-name Pfunction --zip-file fileb://test.zip
+        aws lambda update-function-code --function-name Rfunction --zip-file fileb://test.zip
               
     - name: Check if Everything Works
       run: echo "Everything works fine"    
