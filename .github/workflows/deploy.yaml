@@ -21,6 +21,14 @@ jobs:
     - name: Convert to Zip Format
       run: zip -j test.zip ./code.py    
 
+    - name: Create Lambda Role
+      run: |
+        aws iam create-role --role-name seunxxxrole --assume-role-policy-document file://trust-policy.json
+    
+    - name: wait for role creation
+      run: sleep 10    
+
+
     - name: Create Lambda Function
       run: |
         aws lambda create-function --function-name Pfunction --zip-file fileb://test.zip --runtime python3.9 --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/seunxxrole --handler Pfunction.handler
