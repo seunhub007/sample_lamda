@@ -23,7 +23,7 @@ jobs:
 
     - name: Create Lambda Role
       run: |
-        aws iam create-role --role-name goodrole --assume-role-policy-document file://sample.json
+        aws iam create-role --role-name bestrole --assume-role-policy-document file://sample.json
     
     - name: wait for role creation
       run: sleep 10  
@@ -37,10 +37,10 @@ jobs:
 
     - name: Attach policy to role
       run: |
-        aws iam attach-role-policy --role-name goodrole --policy-arn arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:policy/bestpolicy
+        aws iam attach-role-policy --role-name bestrole --policy-arn arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:policy/bestpolicy
 
-    - name: wait for policy attachment
-      run: sleep 10
+    # - name: wait for policy attachment
+    #   run: sleep 10
 
     # - name: Create Lambda Function
     #   run: |
