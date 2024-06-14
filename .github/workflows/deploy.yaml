@@ -33,7 +33,7 @@ jobs:
         aws iam create-policy --policy-name bestpolicy --policy-document file://policy.json
 
     - name: wait for policy creation
-      run: sleep 30
+      run: sleep 10
 
     - name: Attach policy to role
       run: |
