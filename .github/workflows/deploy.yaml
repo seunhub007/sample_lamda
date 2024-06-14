@@ -26,8 +26,21 @@ jobs:
         aws iam create-role --role-name bestrole --assume-role-policy-document file://sample.json
     
     - name: wait for role creation
-      run: sleep 10    
+      run: sleep 10  
+      
+    - name: "Create policy"
+      run: |
+        aws iam create-policy --policy-name bestpolicy --policy-document file://policy.json
 
+    - name: wait for policy creation
+      run: sleep 30
+
+    - name: Attach policy to role
+      run: |
+        aws iam attach-role-policy --role-name bestrole --policy-arn arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:policy/bestpolicy
+
+    - name: wait for policy attachment
+      run: sleep 10
 
     - name: Create Lambda Function
       run: |
