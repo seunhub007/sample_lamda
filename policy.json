@@ -12,13 +12,7 @@
           "s3:PutObject"
         ],
         "Effect": "Allow",
-        "Resource": "arn:aws:s3:::${BucketName}/${KeyName}",
-        "Principal": {
-          "AWS": [
-            "lambda",
-            "s3"
-          ]
-        }
+        "Resource": "arn:aws:s3:::${BucketName}/${KeyName}"
       }
     ]
   }
