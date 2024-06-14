@@ -26,7 +26,7 @@ jobs:
         aws iam create-role --role-name bestrole --assume-role-policy-document file://sample.json
     
     - name: wait for role creation
-      run: sleep 10  
+      run: sleep 5 
       
     - name: "Create policy"
       run: |
